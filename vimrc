@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype on                  " required
+syntax on
 :set nu
 colorscheme jellybeans
 set pastetoggle=<F2>
@@ -31,6 +32,10 @@ Plugin 'ervandew/supertab'
 Plugin 'Raimondi/delimitMate'
 Plugin 'klen/python-mode'
 Plugin 'Yggdroot/indentLine'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "hallettj/jslint.vim"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -111,3 +116,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" vim airline always
+set laststatus=2

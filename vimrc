@@ -4,6 +4,7 @@ syntax on
 :set nu
 colorscheme jellybeans
 set pastetoggle=<F2>
+let mapleader=","
 " allow quit via single keypress (Q)
 map Q :wq<CR>
 nnoremap <leader><leader> :xa<cr>
@@ -26,16 +27,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/neocomplcache'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'ervandew/supertab'
-Plugin 'Raimondi/delimitMate'
-Plugin 'klen/python-mode'
 Plugin 'Yggdroot/indentLine'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "hallettj/jslint.vim"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

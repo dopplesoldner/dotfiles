@@ -7,6 +7,7 @@ set pastetoggle=<F2>
 let mapleader=","
 " allow quit via single keypress (Q)
 map Q :wq<CR>
+map W :w<CR>
 nnoremap <leader><leader> :xa<cr>
 
 " set the runtime path to include Vundle and initialize
@@ -24,10 +25,15 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/neocomplcache'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
+Plugin 'Shougo/neocomplete'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'marcweber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,18 +60,20 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0 
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1 
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1 
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3 
-
 " tab to spaces
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 "##############################################################################                                                                         
@@ -111,3 +119,24 @@ let g:pymode_folding = 0
 
 " vim airline always
 set laststatus=2
+
+"ctrlp faster indexing
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
+let g:ctrlp_working_path_mode = 'ra'
+
+"latex spell check etc
+let g:tex_conceal = ""
+augroup latexsettings
+    autocmd FileType tex set spell spelllang=en_gb
+augroup END
+
+"latexbox
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2

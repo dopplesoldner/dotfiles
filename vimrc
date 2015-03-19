@@ -1,7 +1,6 @@
 set nocompatible              " be iMproved, required
-filetype on                  " required
 syntax on
-:set nu
+:set relativenumber
 colorscheme jellybeans
 set pastetoggle=<F2>
 let mapleader=","
@@ -28,34 +27,24 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
-Plugin 'Shougo/neocomplete'
+"Plugin 'Shougo/neocomplete'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+"Plugin 'marcweber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Plugin 'Raimondi/delimitMate'
+Bundle 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 
 map <C-\> :NERDTreeToggle<CR>
-
 " close nerdtree with q 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -66,15 +55,15 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-"let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 "##############################################################################                                                                         
 "" Easier split navigation                                                                                                                               
@@ -139,4 +128,11 @@ augroup END
 
 "latexbox
 let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 2
+let g:LatexBox_quickfix = 1 
+
+" Do not display "Pattern not found" messages during YouCompleteMe completion
+" " Patch: https://groups.google.com/forum/#!topic/vim_dev/WeBBjkXE8H8
+ try
+   set shortmess+=c
+catch /E539: Illegal character/
+endtry

@@ -27,15 +27,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
-"Plugin 'Shougo/neocomplete'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-"Plugin 'marcweber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
+Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

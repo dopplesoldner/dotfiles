@@ -22,6 +22,9 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -29,14 +32,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
-Bundle 'klen/python-mode'
-Bundle 'pangloss/vim-javascript'
-Bundle 'wookiehangover/jshint.vim'
+Plugin 'klen/python-mode'
+Plugin 'pangloss/vim-javascript'
+Plugin 'wookiehangover/jshint.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,7 +56,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-"" make YCM compatible with UltiSnips (using supertab)
+""" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -64,10 +64,9 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "" better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
-"let g:UltiSnipsExpandTrigger="<F3>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-"let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsListSnippets = "<c-tab>"
 
 "##############################################################################                                                                         
 "" Easier split navigation                                                                                                                               

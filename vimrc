@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 syntax on
+:set number
 :set relativenumber
 colorscheme jellybeans
 set pastetoggle=<F2>
@@ -33,6 +34,9 @@ Plugin 'Raimondi/delimitMate'
 Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
+Bundle 'klen/python-mode'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wookiehangover/jshint.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,22 +49,25 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0 
+"let g:acp_enableAtStartup = 1
 " tab to spaces
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" make YCM compatible with UltiSnips (using supertab)
+"" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
+"" better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsExpandTrigger="<F3>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsEditSplit="vertical"
 
 "##############################################################################                                                                         
 "" Easier split navigation                                                                                                                               
@@ -97,11 +104,19 @@ map <C-f> :PymodeLintAuto<CR>
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+"let g:pymode_lint_on_fly = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" close scratch automatically
+" " If you prefer the Omni-Completion tip window to close when a selection is
+" " made, these lines close it on movement in insert mode or when leaving
+" " insert mode
+ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " vim airline always
 set laststatus=2
@@ -120,7 +135,9 @@ let g:ctrlp_working_path_mode = 'ra'
 "latex spell check etc
 let g:tex_conceal = ""
 augroup latexsettings
-    autocmd FileType tex set spell spelllang=en_gb
+    autocmd FileType tex 
+    set spell spelllang=en_gb
+    "set textwidth=100
 augroup END
 
 "latexbox

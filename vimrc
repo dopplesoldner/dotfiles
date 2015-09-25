@@ -8,7 +8,7 @@ let mapleader=","
 " allow quit via single keypress (Q)
 map Q :wq<CR>
 map W :w<CR>
-nnoremap <leader><leader> :xa<cr>
+map X :xa<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -37,6 +37,7 @@ Plugin 'klen/python-mode'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,6 +79,8 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+"powerline fonts
+let g:airline_powerline_fonts = 1
 
 " Python-mode
 " Activate rope
@@ -95,7 +98,7 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 "Linting
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_checkers = ['pyflakes']
 " Auto check on save
 let g:pymode_lint_write = 1
 map <C-f> :PymodeLintAuto<CR>
@@ -121,15 +124,11 @@ let g:pymode_folding = 0
 set laststatus=2
 
 "ctrlp faster indexing
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files=0 
+let g:ctrlp_max_depth=40
 
 "latex spell check etc
 let g:tex_conceal = ""
@@ -149,3 +148,25 @@ let g:LatexBox_quickfix = 1
    set shortmess+=c
 catch /E539: Illegal character/
 endtry
+
+"vim cursor shape
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+"easymotion mappings
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1

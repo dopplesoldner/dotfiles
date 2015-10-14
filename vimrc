@@ -9,6 +9,8 @@ let mapleader=","
 map Q :wq<CR>
 map W :w<CR>
 map X :xa<CR>
+map ,n :lnext<CR>
+map ,m :lprevious<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -38,6 +40,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,19 +99,14 @@ let g:airline_powerline_fonts = 1
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
 
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checkers = ['pyflakes']
-" Auto check on save
-let g:pymode_lint_write = 1
+""Linting
+let g:pymode_lint = 0
+let g:pymode_lint_write = 0
 map <C-f> :PymodeLintAuto<CR>
 
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
-"let g:pymode_lint_on_fly = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
@@ -122,6 +120,17 @@ let g:pymode_folding = 0
 
 " vim airline always
 set laststatus=2
+
+" syntastic settings
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_auto_loc_list = 1
 
 "ctrlp faster indexing
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'

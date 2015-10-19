@@ -45,7 +45,9 @@ Plugin 'scrooloose/syntastic'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 map <C-\> :NERDTreeToggle<CR>
 " close nerdtree with q 

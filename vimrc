@@ -109,6 +109,12 @@ map <C-f> :PymodeLintAuto<CR>
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+"let g:pymode_lint_on_fly = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+map <C-f> :PymodeLintAuto<CR>
+let g:pymode_rope_rename_bind = '<leader>r'
+let g:pymode_rope_goto_definition_bind = '<leader>g'
 
 " Don't autofold code
 let g:pymode_folding = 0

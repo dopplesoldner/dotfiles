@@ -1,19 +1,22 @@
 #!/bin/sh
 
 #install vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-#download rc files
-wget -O ~/.vimrc --backups https://raw.githubusercontent.com/dopplesoldner/dotfiles/master/vimrc
-wget -O ~/.zshrc --backups https://raw.githubusercontent.com/dopplesoldner/dotfiles/master/zshrc
-wget -O ~/.screenrc --backups https://raw.githubusercontent.com/dopplesoldner/dotfiles/master/screenrc
-wget -O ~/.zpretzorc --backups https://raw.githubusercontent.com/dopplesoldner/dotfiles/master/zpretzorc
+#add soft links
+d=`pwd`
+ln -s $d/vimrc ~/.vimrc
+ln -s $d/screenrc ~/.screenrc
 
-#install plugins
-vim +PluginInstall +qall
+##colors
+#mkdir ~/.vim/colors/
+#cp jellybeans.vim ~/.vim/colors/
 
-#ultisnips
-mkdir -p ~/.vim/after/plugin
-ln -s ~/.vim/bundle/ultisnips/after/plugin/* ~/.vim/after/plugin
-mkdir ~/.vim/ftdetect
-ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect
+###ultisnips
+#mkdir -p ~/.vim/after/plugin
+#ln -s ~/.vim/bundle/ultisnips/after/plugin/* ~/.vim/after/plugin
+#mkdir ~/.vim/ftdetect
+#ln -s ~/.vim/bundle/ultisnips/ftdetect/* ~/.vim/ftdetect
+
+##install plugins
+#vim +PluginInstall +qall

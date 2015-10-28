@@ -9,8 +9,7 @@ let mapleader=","
 map Q :wq<CR>
 map W :w<CR>
 map X :xa<CR>
-map ,n :lnext<CR>
-map ,m :lprevious<CR>
+map ,x :lclose<CR>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -41,6 +40,7 @@ Plugin 'wookiehangover/jshint.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,6 +87,14 @@ nmap <silent> <c-l> :wincmd l<CR>
 "powerline fonts
 let g:airline_powerline_fonts = 1
 
+"git fugitive mappings
+"
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff HEAD<cr>
+nmap <leader>gg :Ggrep<cr>
+
 " Python-mode
 " Activate rope
 " Keys:
@@ -115,6 +123,7 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 map <C-f> :PymodeLintAuto<CR>
 let g:pymode_rope_rename_bind = '<leader>r'
 let g:pymode_rope_goto_definition_bind = '<leader>g'
+let g:pymode_rope_extract_method_bind = '<leader>rm'
 
 " Don't autofold code
 let g:pymode_folding = 0

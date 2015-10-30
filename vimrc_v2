@@ -99,6 +99,7 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff HEAD<cr>
 nmap <leader>gg :Ggrep<cr>
+nmap <leader>gb :Gblame<cr>
 
 ""Linting
 let g:pymode_lint = 0

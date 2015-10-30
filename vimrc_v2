@@ -90,7 +90,7 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 "" NerdTree
 map <C-\> :NERDTreeToggle<CR>
 " close nerdtree with q
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") |
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "git fugitive mappings
 "

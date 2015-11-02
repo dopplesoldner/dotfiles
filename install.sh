@@ -7,6 +7,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #add soft links
 echo "Creating RC files"
 d=`pwd`
+mv -f ~/.vimrc ~/.vimrc.bak
+mv -f ~/.screenrc ~/.screenrc.bak
 ln -s $d/vimrc ~/.vimrc
 ln -s $d/screenrc ~/.screenrc
 

@@ -2,7 +2,7 @@
 
 #install vundle
 echo "Cloning Vundle"
-mv -rf ~/.vim ~/.vim.bak
+mv -f ~/.vim ~/.vim.bak
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #add soft links

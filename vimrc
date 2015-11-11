@@ -146,17 +146,17 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=4
 
-"latex spell check etc
-let g:tex_conceal = ""
-augroup latexsettings
-    autocmd FileType tex
-    set spell spelllang=en_gb
-    "set textwidth=100
-augroup END
+""latex spell check etc
+"let g:tex_conceal = ""
+"augroup latexsettings
+    "autocmd FileType tex
+    "set spell spelllang=en_gb
+    ""set textwidth=100
+"augroup END
 
-"latexbox
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 1
+""latexbox
+"let g:LatexBox_latexmk_preview_continuously = 1
+"let g:LatexBox_quickfix = 1
 
 "easymotion mappings
 let g:EasyMotion_do_mapping = 0 " Disable default mappings

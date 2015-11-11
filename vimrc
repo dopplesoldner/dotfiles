@@ -84,8 +84,10 @@ nmap <silent> <c-l> :wincmd l<CR>
 
  "" better key bindings for UltiSnipsExpandTrigger
  let g:UltiSnipsExpandTrigger = "<tab>"
+ let g:UltiSnipsListSnippets = "<c-a>"  
  let g:UltiSnipsJumpForwardTrigger = "<tab>"
  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+ let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips"
 
  "" Filetype indent
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2
@@ -172,4 +174,3 @@ nmap s <Plug>(easymotion-s2)
 
 "" Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-

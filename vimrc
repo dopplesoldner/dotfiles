@@ -29,6 +29,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/vim-auto-save'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " All of your Plugins must be added before the following line
@@ -117,9 +118,11 @@ map <C-f> :PymodeLintAuto<CR>
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 "let g:pymode_lint_on_fly = 1
+let g:pymode_doc = 0
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 map <C-f> :PymodeLintAuto<CR>
+let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind = '<leader>r'
 let g:pymode_rope_goto_definition_bind = '<leader>g'
 let g:pymode_rope_extract_method_bind = '<leader>rm'
@@ -146,7 +149,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=4
+let g:ctrlp_max_depth=7
 
 ""latex spell check etc
 "let g:tex_conceal = ""
@@ -174,3 +177,8 @@ nmap s <Plug>(easymotion-s2)
 
 "" Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+"Auto save
+"
+let g:auto_save = 1 
+let g:auto_save_in_insert_mode = 0

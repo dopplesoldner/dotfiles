@@ -45,14 +45,15 @@ syntax on
 
 colorscheme jellybeans
 "set background=light
-"colorscheme solarized
+""colorscheme solarized
+"colorscheme github
 
 set pastetoggle=<F2>
 let mapleader=","
 set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
+:set tabstop=4
+:set shiftwidth=4
+:set expandtab
 
 "powerline fonts
 let g:airline_powerline_fonts = 1
@@ -97,6 +98,7 @@ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 
 "" NerdTree
 map <C-\> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
 " close nerdtree with q
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -182,3 +184,4 @@ let g:EasyMotion_smartcase = 1
 "
 let g:auto_save = 1 
 let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1

@@ -16,7 +16,7 @@ ln -f -s $d/screenrc ~/.screenrc
 ##colors
 echo "Setting vim colours"
 mkdir ~/.vim/colors/
-cp jellybeans.vim ~/.vim/colors/
+cp *.vim ~/.vim/colors/
 
 ###ultisnips
 echo "Set ultisnips folders"

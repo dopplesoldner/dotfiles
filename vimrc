@@ -43,17 +43,16 @@ syntax on
 :set relativenumber
 :set cmdheight=2
 
-colorscheme jellybeans
-"set background=light
-""colorscheme solarized
-"colorscheme github
+set background=dark
+"colorscheme jellybeans
+colorscheme base16-ocean
 
 set pastetoggle=<F2>
 let mapleader=","
 set smartindent
-:set tabstop=4
-:set shiftwidth=4
-:set expandtab
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 "powerline fonts
 let g:airline_powerline_fonts = 1
@@ -121,6 +120,7 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 "let g:pymode_lint_on_fly = 1
 let g:pymode_doc = 0
+let g:pymode_folding = 0
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 map <C-f> :PymodeLintAuto<CR>
@@ -152,6 +152,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=7
+map <C-t> :CtrlPBuffer<CR>
 
 ""latex spell check etc
 "let g:tex_conceal = ""

@@ -85,7 +85,7 @@ nmap <silent> <c-l> :wincmd l<CR>
 
  "" better key bindings for UltiSnipsExpandTrigger
  let g:UltiSnipsExpandTrigger = "<tab>"
- let g:UltiSnipsListSnippets = "<c-a>"  
+ let g:UltiSnipsListSnippets = "<c-a>"
  let g:UltiSnipsJumpForwardTrigger = "<tab>"
  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
  let g:UltiSnipsSnippetsDir = "~/.vim/bundle/vim-snippets/UltiSnips"
@@ -100,6 +100,8 @@ map <C-\> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 " close nerdtree with q
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
 
 "git fugitive mappings
 "
@@ -109,6 +111,7 @@ nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff HEAD<cr>
 nmap <leader>gg :Ggrep<cr>
 nmap <leader>gb :Gblame<cr>
+nmap <leader>gp :Gpush<cr>
 
 ""Linting
 let g:pymode_lint = 0
@@ -183,6 +186,6 @@ let g:EasyMotion_smartcase = 1
 
 "Auto save
 "
-let g:auto_save = 1 
+let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1

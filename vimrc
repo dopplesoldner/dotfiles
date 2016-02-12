@@ -30,6 +30,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/vim-auto-save'
+Plugin 'tpope/vim-surround'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " All of your Plugins must be added before the following line
@@ -42,6 +43,7 @@ syntax on
 :set number
 :set relativenumber
 :set cmdheight=2
+:set conceallevel=0
 
 set background=dark
 "colorscheme jellybeans
@@ -126,7 +128,6 @@ let g:pymode_doc = 0
 let g:pymode_folding = 0
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
-map <C-f> :PymodeLintAuto<CR>
 let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind = '<leader>r'
 let g:pymode_rope_goto_definition_bind = '<leader>g'
@@ -155,7 +156,8 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=7
-map <C-t> :CtrlPBuffer<CR>
+map <C-b> :CtrlPBuffer<CR>
+map <C-f> :CtrlPTag<CR>
 
 ""latex spell check etc
 "let g:tex_conceal = ""

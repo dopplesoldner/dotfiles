@@ -22,6 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'klen/python-mode'
@@ -31,23 +32,23 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'tpope/vim-surround'
+Plugin 'chriskempson/base16-vim'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 " Custom settings here
 syntax on
-:set number
-:set relativenumber
-:set cmdheight=2
-:set conceallevel=0
+set number
+set relativenumber
+set cmdheight=2
+set conceallevel=0
 
 set background=dark
 "colorscheme jellybeans
-colorscheme base16-ocean
+colorscheme base16-default
 
 set pastetoggle=<F2>
 let mapleader=","
@@ -191,3 +192,6 @@ let g:EasyMotion_smartcase = 1
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1
+
+"ctags
+set tags=./tags;/

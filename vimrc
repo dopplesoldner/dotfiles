@@ -25,11 +25,11 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'klen/python-mode'
-Plugin 'pangloss/vim-javascript'
-Plugin 'easymotion/vim-easymotion'
+"Plugin 'klen/python-mode'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-unimpaired'
+"Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'tpope/vim-surround'
 Plugin 'chriskempson/base16-vim'
@@ -121,18 +121,18 @@ let g:pymode_lint = 0
 let g:pymode_lint_write = 0
 map <C-f> :PymodeLintAuto<CR>
 
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-"let g:pymode_lint_on_fly = 1
-let g:pymode_doc = 0
-let g:pymode_folding = 0
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-let g:pymode_rope_completion = 0
-let g:pymode_rope_rename_bind = '<leader>r'
-let g:pymode_rope_goto_definition_bind = '<leader>g'
-let g:pymode_rope_extract_method_bind = '<leader>rm'
+"" syntax highlighting
+"let g:pymode_syntax = 1
+"let g:pymode_syntax_all = 1
+""let g:pymode_lint_on_fly = 1
+"let g:pymode_doc = 0
+"let g:pymode_folding = 0
+"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+"let g:pymode_syntax_space_errors = g:pymode_syntax_all
+"let g:pymode_rope_completion = 0
+"let g:pymode_rope_rename_bind = '<leader>r'
+"let g:pymode_rope_goto_definition_bind = '<leader>g'
+"let g:pymode_rope_extract_method_bind = '<leader>rm'
 
 " close scratch automatically
  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -146,15 +146,17 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height=4
 
-"ctrlp faster indexing
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+"" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
-"let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=7
 map <C-b> :CtrlPBuffer<CR>

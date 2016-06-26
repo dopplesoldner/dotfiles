@@ -197,3 +197,4 @@ let g:auto_save_silent = 1
 
 "ctags
 set tags=./tags;/
+nnoremap <leader>d Oimport pdb; pdb.set_trace()<Esc>

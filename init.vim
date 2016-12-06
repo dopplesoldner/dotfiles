@@ -10,10 +10,12 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'szw/vim-tags'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 call plug#end()
 
@@ -75,5 +77,9 @@ map <C-f> :CtrlPTag<CR>
  "YCM
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"easytags
+:set tags=./tags;
+:let g:easytags_dynamic_files = 1

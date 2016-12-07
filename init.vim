@@ -16,6 +16,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -30,7 +31,7 @@ set shiftwidth=4
 set expandtab
 set laststatus=2
 
-colorscheme base16-default-dark
+colorscheme base16-tomorrow-night
 
 let mapleader=","
 let g:airline_powerline_fonts = 1
@@ -83,3 +84,24 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "easytags
 :set tags=./tags;
 :let g:easytags_dynamic_files = 1
+
+"git fugitive mappings
+"
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff HEAD<cr>
+nmap <leader>gg :Ggrep<cr>
+nmap <leader>gb :Gblame<cr>
+
+" syntastic settings
+" "
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height=4

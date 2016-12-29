@@ -20,7 +20,7 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-syntax on
+filetype syntax on
 set number
 set relativenumber
 set background=dark

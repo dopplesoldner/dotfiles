@@ -27,6 +27,7 @@ local plugins = {
   'lewis6991/gitsigns.nvim',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
+  'preservim/nerdcommenter',
 
   -- completion
   'hrsh7th/nvim-cmp',
@@ -34,7 +35,6 @@ local plugins = {
   'L3MON4D3/LuaSnip',
   'saadparwaiz1/cmp_luasnip',
   "rafamadriz/friendly-snippets",
-  "github/copilot.vim",
   "williamboman/mason.nvim",
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
@@ -43,6 +43,21 @@ local plugins = {
 	  'nvim-telescope/telescope.nvim',
 	  tag = '0.1.0',
 	  dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
+  {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      config = function()
+          require("copilot").setup({})
+      end,
+  },
+  {
+      "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua" },
+      config = function ()
+          require("copilot_cmp").setup()
+      end
   }
 }
 

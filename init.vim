@@ -1,5 +1,9 @@
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+
 call plug#begin()
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
@@ -9,14 +13,29 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'airblade/vim-gitgutter'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'szw/vim-tags'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'tpope/vim-fugitive'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate'  }
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+" For luasnip users.
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 
 call plug#end()
 
@@ -30,7 +49,7 @@ set shiftwidth=4
 set expandtab
 set laststatus=2
 
-colorscheme base16-tomorrow-night
+"colorscheme base16-tomorrow-night
 
 let mapleader=","
 let g:airline_powerline_fonts = 1
@@ -59,9 +78,9 @@ let NERDTreeChDirMode=2
 
 "" Ctrlp
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
+            \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+            \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+            \ }
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.swp,*.zip,*.pyc,*.log
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_max_files=0
@@ -69,38 +88,88 @@ let g:ctrlp_max_depth=7
 map <C-b> :CtrlPBuffer<CR>
 map <C-f> :CtrlPTag<CR>
 
- "Auto save
- let g:auto_save = 1
- let g:auto_save_in_insert_mode = 0
- let g:auto_save_silent = 1
-
- "YCM
-let g:ycm_collect_identifiers_from_tags_files = 0
-let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"Auto save
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1
 
 "easytags
 :set tags=./tags;
 :let g:easytags_dynamic_files = 1
 
-"git fugitive mappings
-"
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff HEAD<cr>
-nmap <leader>gg :Ggrep<cr>
-nmap <leader>gb :Gblame<cr>
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" syntastic settings
-" "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height=4
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+  -- nvim-cmp supports additional completion capabilities
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local lspconfig = require 'lspconfig'
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+  -- Enable the following language servers
+  local servers = { 'clangd', 'pyright'}
+  for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+  end
+EOF
